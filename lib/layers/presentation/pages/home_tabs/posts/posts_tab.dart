@@ -61,7 +61,9 @@ class _PostsTabState extends State<PostsTab> {
                 },
                 child: ListView.builder(
                   controller: _scrollController,
-                  itemCount: state.data.length,
+                  itemCount: state.hasReachedMax
+                      ? state.data.length
+                      : state.data.length + 1,
                   itemBuilder: (context, index) => index >= state.data.length
                       ? const Center(
                           child: CircularProgressIndicator(),

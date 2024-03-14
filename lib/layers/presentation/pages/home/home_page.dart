@@ -65,18 +65,18 @@ class _HomePageState extends State<HomePage> {
           NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            label: 'Posts',
           ),
           NavigationDestination(
             icon: Badge(child: Icon(Icons.notifications_sharp)),
-            label: 'Notifications',
+            label: 'Tab2',
           ),
           NavigationDestination(
             icon: Badge(
               label: Text('2'),
               child: Icon(Icons.messenger_sharp),
             ),
-            label: 'Messages',
+            label: 'Tab3',
           ),
         ],
       ),
