@@ -32,7 +32,7 @@ jobs:
       - uses: actions/setup-java@v4.2.1
         with:
           distribution: 'zulu'
-          java-version: "17"
+          java-version: "21"
           # providing Gradle to be cached with respect to the Java SDK
           cache: 'gradle'
       
