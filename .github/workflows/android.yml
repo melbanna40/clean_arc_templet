@@ -120,7 +120,7 @@ jobs:
         uses: ncipollo/release-action@v1.14.0
         with:
           artifacts: "build/app/outputs/flutter-apk/app-release.apk"
-          token: ${{ secrets.GITHUBRELEASETOKEN }}
+#          token: ${{ secrets.GITHUBRELEASETOKEN }}
           tag: apk_Release_${{ steps.read-version.outputs.version-number }}
           allowUpdates: true
 
@@ -135,7 +135,7 @@ jobs:
           username: yourusername
           password: yourpassword
           subject: Test Email
-          body: This is a test email sent from GitHub Actions.
+          body: This is a test email sent from GitHub Actions https://github.com/Melhamoouly/posts_task .
           html: |
             <h1>This is a test email</h1>
             <p>Test Paragraph</p>
