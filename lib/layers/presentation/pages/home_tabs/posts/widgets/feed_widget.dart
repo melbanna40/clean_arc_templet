@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:posts_task/layers/domain/adapters/posts/post_obj.dart';
+import 'package:posts_task/layers/domain/models/posts_model.dart';
 import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/comment_button.dart';
 import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/image_widget.dart';
 import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/like_button.dart';
@@ -9,10 +9,10 @@ import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/lik
 import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/love_widget.dart';
 import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/share_button.dart';
 
-class FeedWidget extends StatelessWidget {
-  const FeedWidget({super.key, required this.data});
+class FeedListItem extends StatelessWidget {
+  const FeedListItem({super.key, required this.data});
 
-  final Post data;
+  final Posts data;
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +103,9 @@ class FeedWidget extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            if (data.tags != null)
+            if (data.tags.isNotEmpty)
               Wrap(
-                children: data.tags!
+                children: data.tags
                     .map(
                       (e) => Text(
                         '#$e ',

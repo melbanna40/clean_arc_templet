@@ -6,7 +6,7 @@ import 'package:posts_task/layers/data/source/remote/app_api.dart';
 import 'package:posts_task/layers/data/source/remote/failure/error_handler.dart';
 import 'package:posts_task/layers/data/source/remote/failure/failure.dart';
 import 'package:posts_task/layers/data/source/remote/network_info.dart';
-import 'package:posts_task/layers/domain/adapters/posts/post_obj.dart';
+import 'package:posts_task/layers/domain/models/posts_model.dart';
 import 'package:posts_task/layers/domain/repository/app_repository.dart';
 
 class AppRepositoryImpl implements AppRepository {
@@ -22,7 +22,7 @@ class AppRepositoryImpl implements AppRepository {
   final NetworkInfo _networkInfo;
 
   @override
-  Future<Either<Failure, List<Post>>> getPostsData(
+  Future<Either<Failure, List<Posts>>> getPostsData(
     Map<String, dynamic> params,
   ) async {
     if (await _networkInfo.isConnected) {
@@ -31,18 +31,27 @@ class AppRepositoryImpl implements AppRepository {
         final response = await _api.getPostsApiCall(params);
 
         if (response.data != null && response.data!.isNotEmpty) {
-          final res = <Post>[];
+          final res = <Posts>[];
           response.data?.forEach((element) {
             res.add(
-              Post.fromJson({
-                'id': element?.id,
-                'likes': element?.likes,
-                'tags': element?.tags,
-                'text': element?.text,
-                'publishDate': element?.publishDate,
-                'image': element?.image,
-                'owner': element?.owner?.toJson(),
-              }),
+              Posts(
+                id: element?.id,
+                image: element?.image,
+                tags: element!.tags!
+                    .where((element) => element != null)
+                    .cast<String>()
+                    .toList(),
+                publishDate: element.publishDate,
+                text: element.text,
+                likes: element.likes,
+                owner: Owner(
+                  id: element.owner?.id,
+                  firstName: element.owner?.firstName,
+                  lastName: element.owner?.lastName,
+                  picture: element.owner?.picture,
+                  title: element.owner?.title,
+                ),
+              ),
             );
           });
           await _localStorage.setPostsList(res);

@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:posts_task/layers/data/app_repository_impl.dart';
-import 'package:posts_task/layers/data/source/local/hive_manager.dart';
 import 'package:posts_task/layers/data/source/local/local_storage.dart';
+import 'package:posts_task/layers/data/source/local/realm_config.dart';
 import 'package:posts_task/layers/data/source/remote/app_api.dart';
 import 'package:posts_task/layers/data/source/remote/dio_factory.dart';
 import 'package:posts_task/layers/data/source/remote/network_info.dart';
@@ -24,9 +24,7 @@ Future<void> initializeGetIt() async {
   );
   getIt.registerFactory<LocalStorage>(
     () => LocalStorageImpl(
-      hiveBox: HiveManager.instance.database,
-      posts: HiveManager.instance.posts,
-    ),
+      realmDB: RealmConfig.instance.database,),
   );
   // dio factory
   getIt.registerLazySingleton<DioFactory>(() => DioFactory(getIt()));

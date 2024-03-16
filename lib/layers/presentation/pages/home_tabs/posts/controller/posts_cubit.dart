@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:posts_task/layers/domain/adapters/posts/post_obj.dart';
+import 'package:posts_task/layers/domain/models/posts_model.dart';
 import 'package:posts_task/layers/domain/usecase/posts/posts_usecase.dart';
 
 part 'posts_state.dart';

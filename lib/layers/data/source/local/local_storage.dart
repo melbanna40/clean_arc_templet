@@ -1,32 +1,31 @@
-import 'package:hive/hive.dart';
-import 'package:posts_task/layers/domain/adapters/posts/post_obj.dart';
+import 'package:posts_task/layers/domain/models/posts_model.dart';
+import 'package:realm/realm.dart';
 
-const appKey = 'PostsTaskDbAppBox';
+const appKey = 'PostssTaskDbAppBox';
 
 const postsBox = 'postsBox';
 
 abstract class LocalStorage {
-  Future<void> setPostsList(List<Post> countryCodeAdapter);
+  Future<void> setPostsList(List<Posts> countryCodeAdapter);
 
-  Future<List<Post>?> getPostsList();
+  Future<List<Posts>?> getPostsList();
 }
 
 class LocalStorageImpl implements LocalStorage {
   LocalStorageImpl({
-    required Box<dynamic> hiveBox,
-    required Box<Post> posts,
-  })  : _hiveBox = hiveBox,
-        _posts = posts;
-  final Box<dynamic> _hiveBox;
-  final Box<Post> _posts;
+    required Realm realmDB,
+  }) : _realmDB = realmDB;
+  final Realm _realmDB;
 
   @override
-  Future<void> setPostsList(List<Post> posts) async {
-    await _posts.addAll(posts);
+  Future<void> setPostsList(List<Posts> posts) async {
+    _realmDB.write(() {
+      _realmDB.addAll(posts);
+    });
   }
 
   @override
-  Future<List<Post>?> getPostsList() async {
-    return _posts.values.toList();
+  Future<List<Posts>?> getPostsList() async {
+    return _realmDB.all<Posts>().toList();
   }
 }

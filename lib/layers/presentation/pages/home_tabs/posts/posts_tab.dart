@@ -8,10 +8,10 @@ class PostsTab extends StatefulWidget {
   const PostsTab({super.key});
 
   @override
-  State<PostsTab> createState() => _PostsTabState();
+  State<PostsTab> createState() => PostsTabState();
 }
 
-class _PostsTabState extends State<PostsTab> {
+class PostsTabState extends State<PostsTab> {
   final _scrollController = ScrollController();
   final debounce = Debounce(milliseconds: 100);
   int page = 1;
@@ -60,6 +60,7 @@ class _PostsTabState extends State<PostsTab> {
                       .getPosts({'page': 1, 'limit': 8});
                 },
                 child: ListView.builder(
+                  key: const ValueKey('posts_page_list_key'),
                   controller: _scrollController,
                   itemCount: state.hasReachedMax
                       ? state.data.length
@@ -68,7 +69,7 @@ class _PostsTabState extends State<PostsTab> {
                       ? const Center(
                           child: CircularProgressIndicator(),
                         )
-                      : FeedWidget(
+                      : FeedListItem(
                           data: state.data[index],
                         ),
                 ),

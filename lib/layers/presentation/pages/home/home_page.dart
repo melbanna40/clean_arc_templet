@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: NavigationBar(
+        key: const Key('bottomNavigationBar'),
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
@@ -63,15 +64,18 @@ class _HomePageState extends State<HomePage> {
         selectedIndex: currentPageIndex,
         destinations: const [
           NavigationDestination(
+            key: Key('Posts'),
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
             label: 'Posts',
           ),
           NavigationDestination(
+            key: Key('Tab2'),
             icon: Badge(child: Icon(Icons.notifications_sharp)),
             label: 'Tab2',
           ),
           NavigationDestination(
+            key: Key('Tab3'),
             icon: Badge(
               label: Text('2'),
               child: Icon(Icons.messenger_sharp),

@@ -1,12 +1,57 @@
-// This is a basic Flutter widget test.
+// import 'dart:developer';
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-
-
-void main() {
-
-}
+// import 'package:flutter/material.dart';
+// import 'package:flutter_test/flutter_test.dart';
+// import 'package:mockito/mockito.dart';
+// import 'package:posts_task/layers/presentation/pages/home/home_page.dart';
+//
+// class MockNavigationBar extends Mock implements NavigationBar {
+//   @override
+//   String toString({DiagnosticLevel minLevel = DiagnosticLevel.debug}) {
+//     super.toString();
+//     return 'NavigatorStateMock';
+//   }
+// }
+//
+// void main() {
+//   group('HomePage Widget', () {
+//     testWidgets('Check navigation', (WidgetTester tester) async {
+//       // Create mock navigation bar
+//       final mockNavigationBar = MockNavigationBar();
+//
+//       // Check if the third tab is selected
+//       expect(find.text('Posts'), findsNothing);
+//       expect(find.text('Tab2'), findsNothing);
+//       expect(find.text('Tab3'), findsOneWidget);
+//
+//       // Build the home page widget
+//       await tester.pumpWidget(
+//         const MaterialApp(
+//           home: HomePage(),
+//         ),
+//       );
+//
+//       // Set up mock behavior for navigation bar
+//       when(mockNavigationBar.onDestinationSelected!(0))
+//           .thenAnswer((realInvocation) {
+//         log(realInvocation.toString());
+//       });
+//
+//       // Tap on the second tab
+//       when(mockNavigationBar.onDestinationSelected!(1))
+//           .thenAnswer((realInvocation) {
+//         log(realInvocation.toString());
+//       });
+//       // Rebuild the widget after tapping
+//       await tester.pump();
+//
+//       // Tap on the third tab
+//       when(mockNavigationBar.onDestinationSelected!(2))
+//           .thenAnswer((realInvocation) {
+//         log(realInvocation.toString());
+//       });
+//       // Rebuild the widget after tapping
+//       await tester.pump();
+//     });
+//   });
+// }
