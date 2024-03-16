@@ -78,13 +78,16 @@ jobs:
 #        run: flutter drive --target=integration_test/app_test.dart
 
       # --- creating github apk-release ---
-      - name: Create apk-release in GitHub
-        uses: ncipollo/release-action@v1.14.0
-        with:
-          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
-          token: ${{ secrets.GITHUBRELEASETOKEN }}
-          tag: apk_Release_${{ steps.read-version.outputs.version-number }}
-          allowUpdates: true
+      - name: Show Me the secret
+        run: echo " ${{ secrets.GITHUBRELEASETOKEN }}"
+
+#      - name: Create apk-release in GitHub
+#        uses: ncipollo/release-action@v1.14.0
+#        with:
+#          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
+#          token: ${{ secrets.GITHUBRELEASETOKEN }}
+#          tag: apk_Release_${{ steps.read-version.outputs.version-number }}
+#          allowUpdates: true
 
 #      - name: Send E-Mail (SMTP)
 #        uses: hilarion5/send-mail@v1
