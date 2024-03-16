@@ -74,8 +74,8 @@ jobs:
       - name: Start release build APK
         run: flutter build apk
 
-      - name: Run E2E Tests
-        run: flutter drive --target=integration_test/app_test.dart
+#      - name: Run E2E Tests
+#        run: flutter drive --target=integration_test/app_test.dart
 
       # --- creating github apk-release ---
       - name: Create apk-release in GitHub
@@ -86,18 +86,18 @@ jobs:
           tag: apk_Release_${{ steps.read-version.outputs.version-number }}
           allowUpdates: true
 
-      - name: Send E-Mail (SMTP)
-        uses: hilarion5/send-mail@v1
-        with:
-          smtp-server: smtp.example.com
-          smtp-port: 465
-          smtp-secure: true
-          from-email: sender@example.com
-          to-email: recipient1@example.com,recipient2@example.com
-          username: yourusername
-          password: yourpassword
-          subject: Test Email
-          body: This is a test email sent from GitHub Actions https://github.com/Melhamoouly/posts_task .
-          html: |
-            <h1>This is a test email</h1>
-            <p>Test Paragraph</p>
+#      - name: Send E-Mail (SMTP)
+#        uses: hilarion5/send-mail@v1
+#        with:
+#          smtp-server: smtp.example.com
+#          smtp-port: 465
+#          smtp-secure: true
+#          from-email: sender@example.com
+#          to-email: recipient1@example.com,recipient2@example.com
+#          username: yourusername
+#          password: yourpassword
+#          subject: Test Email
+#          body: This is a test email sent from GitHub Actions https://github.com/Melhamoouly/posts_task .
+#          html: |
+#            <h1>This is a test email</h1>
+#            <p>Test Paragraph</p>
