@@ -7,7 +7,6 @@ on:
   # you can change it according to your requirement
 
   push:
-#    types: [ closed ]
     branches: [ "prod" ]
 
   # Allows you to run this workflow manually from the Actions tab from your GitHub repo
@@ -19,7 +18,7 @@ on:
 jobs:
   build_ios:
     # to only merge if there is a merge action
-#    if: github.event.pull_request.merged == true
+    #    if: github.event.pull_request.merged == true
     # Contains the type of runner that the job will run on
     runs-on: macos-latest
 
