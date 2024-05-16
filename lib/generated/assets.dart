@@ -3,5 +3,11 @@ class Assets {
   Assets._();
 
   static const String imagesDefault = 'assets/images/default.png';
+  static const String proximaNovaProximaNovaBold = 'assets/fonts/Proxima-Nova/Proxima-Nova-Bold.otf';
+  static const String proximaNovaProximaNovaLight = 'assets/fonts/Proxima-Nova/Proxima-Nova-Light.otf';
+  static const String proximaNovaProximaNovaRegular = 'assets/fonts/Proxima-Nova/Proxima-Nova-Regular.otf';
+  static const String proximaNovaProximaNovaSemibold = 'assets/fonts/Proxima-Nova/Proxima-Nova-Semibold.otf';
+  static const String translationsArSA = 'assets/translations/ar-SA.json';
+  static const String translationsEnUS = 'assets/translations/en-US.json';
 
 }

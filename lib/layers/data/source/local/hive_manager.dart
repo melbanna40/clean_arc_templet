@@ -2,7 +2,7 @@ import 'dart:async';
 
  import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:posts_task/layers/data/source/local/local_storage.dart';
+import 'package:posts_app/layers/data/source/local/local_storage.dart';
 
 class HiveManager {
   HiveManager._();

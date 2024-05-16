@@ -100,7 +100,7 @@ jobs:
 #          username: yourusername
 #          password: yourpassword
 #          subject: Test Email
-#          body: This is a test email sent from GitHub Actions https://github.com/Melhamoouly/posts_task .
+#          body: This is a test email sent from GitHub Actions https://github.com/Melhamoouly/posts_app .
 #          html: |
 #            <h1>This is a test email</h1>
 #            <p>Test Paragraph</p>

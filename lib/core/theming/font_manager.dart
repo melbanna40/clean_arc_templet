@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FontConstants {
-  static const String fontFamily = 'Gotham';
+  static const String fontFamily = 'Proxima Nova';
 }
 
 class FontWeightManager {

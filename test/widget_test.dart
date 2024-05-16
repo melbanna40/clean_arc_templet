@@ -3,7 +3,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_test/flutter_test.dart';
 // import 'package:mockito/mockito.dart';
-// import 'package:posts_task/layers/presentation/pages/home/home_page.dart';
+// import 'package:posts_app/layers/presentation/pages/home/home_page.dart';
 //
 // class MockNavigationBar extends Mock implements NavigationBar {
 //   @override

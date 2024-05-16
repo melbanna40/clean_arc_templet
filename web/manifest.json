@@ -1,6 +1,6 @@
 {
-    "name": "posts_task",
-    "short_name": "posts_task",
+    "name": "posts_app",
+    "short_name": "posts_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

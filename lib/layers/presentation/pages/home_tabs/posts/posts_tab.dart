@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:posts_task/core/debouncer.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/controller/posts_cubit.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/feed_widget.dart';
+import 'package:posts_app/core/debouncer.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/controller/posts_cubit.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/widgets/feed_widget.dart';
 
 class PostsTab extends StatefulWidget {
   const PostsTab({super.key});

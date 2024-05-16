@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:posts_task/core/di/injector.dart';
-import 'package:posts_task/core/log.dart';
-import 'package:posts_task/layers/data/source/local/local_storage.dart';
-import 'package:posts_task/layers/data/source/remote/app_endpoints.dart';
+import 'package:posts_app/core/di/injector.dart';
+import 'package:posts_app/core/log.dart';
+import 'package:posts_app/layers/data/source/local/local_storage.dart';
+import 'package:posts_app/layers/data/source/remote/app_endpoints.dart';
 
 const String applicationJson = 'application/json';
 const String contentType = 'content-type';

@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:posts_task/core/di/injector.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/messages/messages_tab.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/notifications/notifications_tab.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/controller/posts_cubit.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/posts_tab.dart';
+import 'package:posts_app/core/di/injector.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/messages/messages_tab.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/notifications/notifications_tab.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/controller/posts_cubit.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/posts_tab.dart';
 
+@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 

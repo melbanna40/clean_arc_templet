@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:posts_task/layers/data/dto/posts_dto.dart';
-import 'package:posts_task/layers/data/source/remote/app_endpoints.dart';
+import 'package:posts_app/layers/data/dto/posts_dto.dart';
+import 'package:posts_app/layers/data/source/remote/app_endpoints.dart';
 import 'package:retrofit/http.dart';
 
 part 'app_api.g.dart';

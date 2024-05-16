@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:posts_task/layers/data/dto/posts_dto.dart';
-import 'package:posts_task/layers/domain/usecase/posts/posts_usecase.dart';
+import 'package:posts_app/layers/data/dto/posts_dto.dart';
+import 'package:posts_app/layers/domain/usecase/posts/posts_usecase.dart';
 
 part 'posts_state.dart';
 

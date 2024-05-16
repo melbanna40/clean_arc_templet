@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:posts_task/layers/data/dto/posts_dto.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/comment_button.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/image_widget.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/like_button.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/like_widget.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/love_widget.dart';
-import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/share_button.dart';
+import 'package:posts_app/layers/data/dto/posts_dto.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/widgets/comment_button.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/widgets/image_widget.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/widgets/like_button.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/widgets/like_widget.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/widgets/love_widget.dart';
+import 'package:posts_app/layers/presentation/pages/home_tabs/posts/widgets/share_button.dart';
 
 class FeedListItem extends StatelessWidget {
   const FeedListItem({super.key, required this.data});

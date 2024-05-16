@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:posts_task/layers/data/dto/posts_dto.dart';
-import 'package:posts_task/layers/data/source/remote/failure/failure.dart';
-import 'package:posts_task/layers/domain/repository/app_repository.dart';
+import 'package:posts_app/layers/data/dto/posts_dto.dart';
+import 'package:posts_app/layers/data/source/remote/failure/failure.dart';
+import 'package:posts_app/layers/domain/repository/app_repository.dart';
 
 class PostsUseCase {
   PostsUseCase({

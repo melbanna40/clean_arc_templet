@@ -13,9 +13,9 @@ _$PostsDtoImpl _$$PostsDtoImplFromJson(Map<String, dynamic> json) =>
               ? null
               : PostsDataDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-      total: json['total'] as int?,
-      page: json['page'] as int?,
-      limit: json['limit'] as int?,
+      total: (json['total'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
+      limit: (json['limit'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PostsDtoImplToJson(_$PostsDtoImpl instance) =>
@@ -30,7 +30,7 @@ _$PostsDataDtoImpl _$$PostsDataDtoImplFromJson(Map<String, dynamic> json) =>
     _$PostsDataDtoImpl(
       id: json['id'] as String?,
       image: json['image'] as String?,
-      likes: json['likes'] as int?,
+      likes: (json['likes'] as num?)?.toInt(),
       tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       text: json['text'] as String?,
       publishDate: json['publishDate'] as String?,
