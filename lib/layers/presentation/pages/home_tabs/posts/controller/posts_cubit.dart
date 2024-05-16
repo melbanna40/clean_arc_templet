@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:posts_task/layers/domain/models/posts_model.dart';
+import 'package:posts_task/layers/data/dto/posts_dto.dart';
 import 'package:posts_task/layers/domain/usecase/posts/posts_usecase.dart';
 
 part 'posts_state.dart';
@@ -21,7 +21,7 @@ class PostsCubit extends Cubit<PostsState> {
         result.fold((failure) {
           emit(state.copyWith(status: PostsStates.failed));
         }, (data) {
-          if (data.isNotEmpty) {
+          if (data!.isNotEmpty) {
             emit(
               state.copyWith(
                 status: PostsStates.success,
@@ -36,11 +36,11 @@ class PostsCubit extends Cubit<PostsState> {
       } else {
         final result = await mPostsUseCase.call(params);
         result.fold((failure) {}, (data) {
-          if (data.isNotEmpty) {
+          if (data!.isNotEmpty) {
             emit(
               state.copyWith(
                 status: PostsStates.success,
-                data: List.of(state.data)..addAll(data),
+                data: List.of(state.data ?? [])..addAll(data),
                 hasReachedMax: data.length < 8,
               ),
             );

@@ -63,14 +63,14 @@ class PostsTabState extends State<PostsTab> {
                   key: const ValueKey('posts_page_list_key'),
                   controller: _scrollController,
                   itemCount: state.hasReachedMax
-                      ? state.data.length
-                      : state.data.length + 1,
-                  itemBuilder: (context, index) => index >= state.data.length
+                      ? state.data?.length
+                      : state.data!.length + 1,
+                  itemBuilder: (context, index) => index >= state.data!.length
                       ? const Center(
                           child: CircularProgressIndicator(),
                         )
                       : FeedListItem(
-                          data: state.data[index],
+                          data: state.data![index]!,
                         ),
                 ),
               );

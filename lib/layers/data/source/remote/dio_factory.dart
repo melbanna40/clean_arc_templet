@@ -1,18 +1,19 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'dart:io';
 
+import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
+import 'package:posts_task/core/di/injector.dart';
+import 'package:posts_task/core/log.dart';
 import 'package:posts_task/layers/data/source/local/local_storage.dart';
 import 'package:posts_task/layers/data/source/remote/app_endpoints.dart';
 
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
-const String APPLICATION_JSON = 'application/json';
-const String CONTENT_TYPE = 'content-type';
-const String ACCEPT = 'accept';
+const String applicationJson = 'application/json';
+const String contentType = 'content-type';
+const String accept = 'accept';
 // const String AUTHORIZATION = 'Authorization';
-const String AUTHORIZATION = 'Authorization';
-const String DEFAULT_LANGUAGE = 'lang';
-const String APP_ID = 'app-id';
+const String authorization = 'Authorization';
+const String defaultLanguage = 'locale';
+const String appId = 'app-id';
 
 class DioFactory {
   DioFactory(this._localStorage);
@@ -22,17 +23,14 @@ class DioFactory {
   Future<Dio> getDio() async {
     final dio = Dio();
 
-    // Add the DioTokenInterceptor to the Dio instance.
-    dio.interceptors.add(DioTokenInterceptor());
-
-    // final token = await _localStorage.getToken() ?? '';
+    final token = await _localStorage.getToken() ?? '';
     // final language = await _localStorage.getAppLanguage();
     final headers = <String, String>{
       // CONTENT_TYPE: APPLICATION_JSON,
       // ACCEPT: APPLICATION_JSON,
-      // AUTHORIZATION: 'Bearer $token',
-      // DEFAULT_LANGUAGE: language,
-      APP_ID: '65f192f7e5c046f8c9037588'
+      authorization: 'Bearer $token',
+      appId: '65f192f7e5c046f8c9037588',
+      // defaultLanguage: language,
     };
 
     dio.options = BaseOptions(
@@ -42,39 +40,91 @@ class DioFactory {
       sendTimeout: const Duration(minutes: 1),
     );
 
-    if (!kReleaseMode) {
-      // its debug mode so print app logs
-      dio.interceptors.add(
-        PrettyDioLogger(
-          requestHeader: true,
-          requestBody: true,
-          responseHeader: true,
-        ),
-      );
-    }
+    dio.interceptors.add(LoggingInterceptor());
+
+    dio.httpClientAdapter = IOHttpClientAdapter(
+      createHttpClient: () {
+        final client = HttpClient()
+          ..badCertificateCallback = (cert, host, port) => true;
+        return client;
+      },
+    );
 
     return dio;
   }
 }
 
-class DioTokenInterceptor extends Interceptor {
+class LoggingInterceptor extends Interceptor {
+  DateTime? startTime;
+  DateTime? endTime;
+
   @override
   Future<void> onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    // final localStorage = getIt<LocalStorage>();
-    //
-    // // Get the token from shared preferences.
-    // final token = await localStorage.getToken() ?? '';
-    // // Get the language from shared preferences.
+    startTime = DateTime.now();
+    final localStorage = getIt<LocalStorage>();
+
+    // Get the token from shared preferences.
+    final token = await localStorage.getToken() ?? '';
+    // Get the language from shared preferences.
     // final lang = await localStorage.getAppLanguage();
 
     // Update the token and lang in the headers.
-    // options.headers[AUTHORIZATION] = 'Bearer $token';
-    // options.headers[DEFAULT_LANGUAGE] = lang;
+    options.headers[authorization] = 'Bearer $token';
+    // options.headers[defaultLanguage] = lang;
+    options.headers[accept] = 'application/json';
+
+    Log.debug('----------Request Start---------');
+    Log.information(' path :${options.path}');
+
+    ///print full path request
+    if (options.queryParameters.isEmpty) {
+      if (options.path.contains(options.baseUrl)) {
+        Log.information('RequestUrl:${options.path}');
+      } else {
+        Log.information('RequestUrl:${options.baseUrl}${options.path}');
+      }
+    } else {
+      ///If queryParameters is not empty, splice into a complete URl
+      Log.information(
+        'RequestUrl:${options.baseUrl}${options.path}?${Transformer.urlEncodeMap(options.queryParameters)}',
+      );
+    }
+
+    Log.warning('RequestMethod:${options.method}');
+    Log.warning('RequestHeaders:${options.headers}');
+    Log.warning('RequestContentType:${options.contentType}');
+    Log.warning(
+      'RequestDataOptions:${options.data is FormData ? (options.data as FormData).fields.toString() : options.data.toString()}',
+    );
 
     // Continue the request.
     handler.next(options);
+  }
+
+  @override
+  void onResponse(
+    Response<dynamic> response,
+    ResponseInterceptorHandler handler,
+  ) {
+    endTime = DateTime.now();
+    //Request duration
+    final duration = endTime!.difference(startTime!).inMilliseconds;
+    Log.information(
+      '---------- Response Data $response End Request ${response.realUri} in $duration millisecond---------',
+    );
+
+    super.onResponse(response, handler);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    Log.error('--------------Error-----------');
+    Log.error(
+      '${err.response}${err.message}\n${err.response?.realUri.toString() ?? '$err'}',
+    );
+    super.onError(err, handler);
   }
 }

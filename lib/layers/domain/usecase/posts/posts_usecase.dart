@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:posts_task/layers/data/dto/posts_dto.dart';
 import 'package:posts_task/layers/data/source/remote/failure/failure.dart';
-import 'package:posts_task/layers/domain/models/posts_model.dart';
 import 'package:posts_task/layers/domain/repository/app_repository.dart';
 
 class PostsUseCase {
@@ -10,7 +10,9 @@ class PostsUseCase {
 
   final AppRepository _repository;
 
-  Future<Either<Failure, List<Posts>>> call(Map<String, dynamic> params) async {
+  Future<Either<Failure, List<PostsDataDto?>?>> call(
+    Map<String, dynamic> params,
+  ) async {
     return _repository.getPostsData(params);
   }
 }

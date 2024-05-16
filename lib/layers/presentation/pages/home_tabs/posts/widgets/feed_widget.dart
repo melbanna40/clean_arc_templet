@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:posts_task/layers/domain/models/posts_model.dart';
+import 'package:posts_task/layers/data/dto/posts_dto.dart';
 import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/comment_button.dart';
 import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/image_widget.dart';
 import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/like_button.dart';
@@ -12,7 +12,7 @@ import 'package:posts_task/layers/presentation/pages/home_tabs/posts/widgets/sha
 class FeedListItem extends StatelessWidget {
   const FeedListItem({super.key, required this.data});
 
-  final Posts data;
+  final PostsDataDto data;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class FeedListItem extends StatelessWidget {
                   children: [
                     ClipOval(
                       child: ImageWidget(
-                        data: data.owner?.picture ?? '',
+                        data: data.image ?? '',
                         width: 50,
                         height: 50,
                         fit: BoxFit.cover,
@@ -103,9 +103,9 @@ class FeedListItem extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            if (data.tags.isNotEmpty)
+            if (data.tags!.isNotEmpty)
               Wrap(
-                children: data.tags
+                children: data.tags!
                     .map(
                       (e) => Text(
                         '#$e ',

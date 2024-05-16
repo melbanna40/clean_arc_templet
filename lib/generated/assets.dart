@@ -2,4 +2,6 @@
 class Assets {
   Assets._();
 
+  static const String imagesDefault = 'assets/images/default.png';
+
 }

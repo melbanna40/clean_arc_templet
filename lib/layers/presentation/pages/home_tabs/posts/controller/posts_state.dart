@@ -10,12 +10,12 @@ class PostsState extends Equatable {
   });
 
   final PostsStates status;
-  final List<Posts> data;
+  final List<PostsDataDto?>? data;
   final bool hasReachedMax;
 
   PostsState copyWith({
     PostsStates? status,
-    List<Posts>? data,
+    List<PostsDataDto?>? data,
     bool? hasReachedMax,
   }) {
     return PostsState(
