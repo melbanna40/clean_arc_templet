@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:posts_app/core/theming/colors.dart';
@@ -10,6 +9,7 @@ class AppTextFormField extends StatelessWidget {
     super.key,
     this.enabled = true,
     this.length,
+    this.keyboardType,
     this.borderRadius,
     this.contentPadding,
     this.focusedBorder,
@@ -24,10 +24,12 @@ class AppTextFormField extends StatelessWidget {
     this.backgroundColor,
     this.controller,
     required this.validator,
+    this.onChanged,
   });
 
   final bool enabled;
   final int? length;
+  final TextInputType? keyboardType;
   final double? borderRadius;
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
@@ -41,7 +43,8 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
-  final Function(String?) validator;
+  final String? Function(String?) validator;
+  final void Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +52,13 @@ class AppTextFormField extends StatelessWidget {
       enabled: enabled,
       controller: controller,
       maxLength: length,
-      buildCounter: (context,
-              {required currentLength,
-              required isFocused,
-              required maxLength}) =>
+      keyboardType: keyboardType,
+      buildCounter: (
+        context, {
+        required currentLength,
+        required isFocused,
+        required maxLength,
+      }) =>
           maxLength != null
               ? Text(
                   '$currentLength/$maxLength',
@@ -89,14 +95,16 @@ class AppTextFormField extends StatelessWidget {
           ),
         ),
         disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 8),
-            borderSide: const BorderSide(color: Colors.white)),
+          borderRadius: BorderRadius.circular(borderRadius ?? 8),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
         hintStyle: hintStyle ??
             Theme.of(context)
                 .textTheme
                 .labelLarge!
                 .copyWith(fontFamily: FontConstants.fontFamily),
         hintText: hintText,
+
         // label: AnimatedTextKit(
         //   animatedTexts: [
         //     TypewriterAnimatedText(
@@ -115,11 +123,14 @@ class AppTextFormField extends StatelessWidget {
         fillColor: backgroundColor ?? ColorManager.textFieldFillColor,
         filled: true,
       ),
+      onChanged: (value) {
+        if (onChanged != null) {
+          onChanged!(value);
+        }
+      },
       obscureText: isObscureText ?? false,
       style: style ?? TextStyles.font14DarkBlueMedium,
-      validator: (value) {
-        return validator(value);
-      },
+      validator: validator,
     );
   }
 }

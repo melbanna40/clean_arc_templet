@@ -8,6 +8,7 @@ import 'package:posts_app/layers/data/source/remote/app_api.dart';
 import 'package:posts_app/layers/data/source/remote/dio_factory.dart';
 import 'package:posts_app/layers/domain/repository/app_repository.dart';
 import 'package:posts_app/layers/domain/usecase/posts/posts_usecase.dart';
+import 'package:posts_app/layers/presentation/base/app_routes/app_router.dart';
 import 'package:posts_app/layers/presentation/pages/home/controller/home_cubit.dart';
 import 'package:posts_app/layers/presentation/pages/home_tabs/posts/controller/posts_cubit.dart';
 
@@ -22,21 +23,20 @@ Future<void> initializeGetIt() async {
     ..registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()),
     )
+    //LocalStorage
     ..registerFactory<LocalStorage>(
       () => LocalStorageImpl(
         hiveBox: HiveManager.instance.database,
       ),
     )
-    // dio factory
+    ..registerLazySingleton<AppRouter>(() => AppRouterSingleton().appRouter)
     ..registerLazySingleton<DioFactory>(() => DioFactory(getIt()));
 
   final dio = await getIt<DioFactory>().getDio();
+
   //app service client
   getIt
     ..registerLazySingleton<AppServiceClient>(() => AppServiceClient(dio))
-
-    // getIt.registerLazySingleton<Api>(() => ApiImpl());
-
     ..registerFactory<AppRepository>(
       () => AppRepositoryImpl(
         api: getIt(),

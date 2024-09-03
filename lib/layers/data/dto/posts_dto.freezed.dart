@@ -29,8 +29,12 @@ mixin _$PostsDto {
   int? get limit => throw _privateConstructorUsedError;
   set limit(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this PostsDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostsDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PostsDtoCopyWith<PostsDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$PostsDtoCopyWithImpl<$Res, $Val extends PostsDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PostsDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class __$$PostsDtoImplCopyWithImpl<$Res>
       _$PostsDtoImpl _value, $Res Function(_$PostsDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostsDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +160,9 @@ class _$PostsDtoImpl implements _PostsDto {
     return 'PostsDto(data: $data, total: $total, page: $page, limit: $limit)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostsDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PostsDtoImplCopyWith<_$PostsDtoImpl> get copyWith =>
@@ -188,8 +198,11 @@ abstract class _PostsDto implements PostsDto {
   @override
   int? get limit;
   set limit(int? value);
+
+  /// Create a copy of PostsDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostsDtoImplCopyWith<_$PostsDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -215,8 +228,12 @@ mixin _$PostsDataDto {
   PostsDataOwnerDto? get owner => throw _privateConstructorUsedError;
   set owner(PostsDataOwnerDto? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this PostsDataDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostsDataDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PostsDataDtoCopyWith<PostsDataDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -249,6 +266,8 @@ class _$PostsDataDtoCopyWithImpl<$Res, $Val extends PostsDataDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PostsDataDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -292,6 +311,8 @@ class _$PostsDataDtoCopyWithImpl<$Res, $Val extends PostsDataDto>
     ) as $Val);
   }
 
+  /// Create a copy of PostsDataDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PostsDataOwnerDtoCopyWith<$Res>? get owner {
@@ -334,6 +355,8 @@ class __$$PostsDataDtoImplCopyWithImpl<$Res>
       _$PostsDataDtoImpl _value, $Res Function(_$PostsDataDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostsDataDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -413,7 +436,9 @@ class _$PostsDataDtoImpl implements _PostsDataDto {
     return 'PostsDataDto(id: $id, image: $image, likes: $likes, tags: $tags, text: $text, publishDate: $publishDate, owner: $owner)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostsDataDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PostsDataDtoImplCopyWith<_$PostsDataDtoImpl> get copyWith =>
@@ -461,8 +486,11 @@ abstract class _PostsDataDto implements PostsDataDto {
   @override
   PostsDataOwnerDto? get owner;
   set owner(PostsDataOwnerDto? value);
+
+  /// Create a copy of PostsDataDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostsDataDtoImplCopyWith<_$PostsDataDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -484,8 +512,12 @@ mixin _$PostsDataOwnerDto {
   String? get picture => throw _privateConstructorUsedError;
   set picture(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this PostsDataOwnerDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostsDataOwnerDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PostsDataOwnerDtoCopyWith<PostsDataOwnerDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -514,6 +546,8 @@ class _$PostsDataOwnerDtoCopyWithImpl<$Res, $Val extends PostsDataOwnerDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PostsDataOwnerDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -572,6 +606,8 @@ class __$$PostsDataOwnerDtoImplCopyWithImpl<$Res>
       $Res Function(_$PostsDataOwnerDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostsDataOwnerDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -631,7 +667,9 @@ class _$PostsDataOwnerDtoImpl implements _PostsDataOwnerDto {
     return 'PostsDataOwnerDto(id: $id, title: $title, firstName: $firstName, lastName: $lastName, picture: $picture)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostsDataOwnerDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PostsDataOwnerDtoImplCopyWith<_$PostsDataOwnerDtoImpl> get copyWith =>
@@ -672,8 +710,11 @@ abstract class _PostsDataOwnerDto implements PostsDataOwnerDto {
   @override
   String? get picture;
   set picture(String? value);
+
+  /// Create a copy of PostsDataOwnerDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostsDataOwnerDtoImplCopyWith<_$PostsDataOwnerDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -7,6 +7,8 @@ class Assets {
   static const String proximaNovaProximaNovaLight = 'assets/fonts/Proxima-Nova/Proxima-Nova-Light.otf';
   static const String proximaNovaProximaNovaRegular = 'assets/fonts/Proxima-Nova/Proxima-Nova-Regular.otf';
   static const String proximaNovaProximaNovaSemibold = 'assets/fonts/Proxima-Nova/Proxima-Nova-Semibold.otf';
+  static const String svgIcErrorAlert = 'assets/svg/ic_error_alert.svg';
+  static const String svgIcSucessAlert = 'assets/svg/ic_sucess_alert.svg';
   static const String translationsArSA = 'assets/translations/ar-SA.json';
   static const String translationsEnUS = 'assets/translations/en-US.json';
 

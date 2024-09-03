@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:posts_app/core/easy_loading_config.dart';
-import 'package:posts_app/core/notifications_helper.dart';
+import 'package:posts_app/core/helpers/notifications_helper.dart';
+import 'package:posts_app/core/theming/theme.dart';
 import 'package:posts_app/layers/presentation/base/app_routes/app_router.dart';
-import 'package:posts_app/layers/presentation/base/theme.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+ import 'package:responsive_framework/responsive_framework.dart';
 
 class AppRoot extends StatefulWidget {
   const AppRoot({super.key});
@@ -22,7 +22,7 @@ class _AppRootState extends State<AppRoot> {
   @override
   void initState() {
     EasyLoadingConfig.configLoading();
-    mNotificationSettings.registerNotification(context);
+    // mNotificationSettings.registerNotification(context);
     super.initState();
   }
 

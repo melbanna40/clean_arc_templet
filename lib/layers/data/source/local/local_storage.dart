@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:posts_app/resources/langauge_manager.dart';
+import 'package:posts_app/core/locale/language_manager.dart';
 
 const appKey = 'HappyLandDbAppBox';
 const userBox = 'userBox';

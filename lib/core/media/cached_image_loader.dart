@@ -1,6 +1,7 @@
+
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:posts_app/core/widgets/image/image_dialog.dart';
+import 'package:posts_app/core/media/image_dialog.dart';
 import 'package:posts_app/core/widgets/loading_widget.dart';
 import 'package:posts_app/generated/assets.dart';
 
@@ -20,7 +21,6 @@ class CachedImageLoader extends StatelessWidget {
   final double height;
   final double width;
   final double loadingSize;
-
   final Alignment alignment;
 
   @override

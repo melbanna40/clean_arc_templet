@@ -95,8 +95,8 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
   }
 
   ThemeData _base(final ColorScheme colorScheme) {
-    final primaryTextTheme = GoogleFonts.exoTextTheme();
-    final secondaryTextTheme = GoogleFonts.neuchaTextTheme();
+    final primaryTextTheme = GoogleFonts.cairoTextTheme();
+    final secondaryTextTheme = GoogleFonts.cairoTextTheme();
     final textTheme = primaryTextTheme.copyWith(
       displaySmall: secondaryTextTheme.displaySmall,
       displayMedium: secondaryTextTheme.displayMedium,
@@ -112,14 +112,14 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       colorScheme: colorScheme,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       textTheme: textTheme,
-      fontFamily: 'Gotham',
+      fontFamily: 'Cairo',
       appBarTheme: AppBarTheme(
-        toolbarHeight: 152,
+        toolbarHeight: 65,
         color: colorScheme.surface.withOpacity(0.95),
       ),
-      cardTheme: CardTheme(color: colorScheme.surfaceVariant),
+      cardTheme: CardTheme(color: colorScheme.surfaceContainerHighest),
       scaffoldBackgroundColor:
-          isLight() ? neutralColor : colorScheme.background,
+      isLight() ? neutralColor : colorScheme.surface,
       tabBarTheme: TabBarTheme(
         labelColor: colorScheme.onSurface,
         unselectedLabelColor: colorScheme.onSurface,
@@ -136,7 +136,7 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       navigationRailTheme: NavigationRailThemeData(
         backgroundColor: isLight() ? neutralColor : colorScheme.surface,
         selectedIconTheme:
-            IconThemeData(color: colorScheme.onSecondaryContainer),
+        IconThemeData(color: colorScheme.onSecondaryContainer),
         indicatorColor: colorScheme.secondaryContainer,
       ),
       chipTheme: ChipThemeData(
@@ -174,9 +174,9 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
 
   @override
   CustomTheme lerp(
-    covariant ThemeExtension<CustomTheme>? other,
-    double t,
-  ) {
+      covariant ThemeExtension<CustomTheme>? other,
+      double t,
+      ) {
     if (other is! CustomTheme) return this;
     return CustomTheme(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t)!,
@@ -207,11 +207,9 @@ extension on Scheme {
       onErrorContainer: Color(onErrorContainer),
       outline: Color(outline),
       outlineVariant: Color(outlineVariant),
-      background: Color(background),
-      onBackground: Color(onBackground),
       surface: Color(surface),
       onSurface: Color(onSurface),
-      surfaceVariant: Color(surfaceVariant),
+      surfaceContainerHighest: Color(surfaceVariant),
       onSurfaceVariant: Color(onSurfaceVariant),
       inverseSurface: Color(inverseSurface),
       onInverseSurface: Color(inverseOnSurface),

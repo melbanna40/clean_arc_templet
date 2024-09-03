@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,13 +9,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:posts_app/core/bloc_observer.dart';
 import 'package:posts_app/core/di/injector.dart';
+import 'package:posts_app/core/helpers/notifications_helper.dart';
+import 'package:posts_app/core/locale/language_manager.dart';
 import 'package:posts_app/core/log.dart';
-import 'package:posts_app/core/notifications_helper.dart';
 import 'package:posts_app/layers/data/source/local/hive_manager.dart';
 import 'package:posts_app/layers/presentation/base/app_root.dart';
-import 'package:posts_app/layers/presentation/base/bloc_observer.dart';
-import 'package:posts_app/resources/langauge_manager.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -55,7 +54,7 @@ void main() async {
   await HiveManager.instance.initialize();
 
   await initializeGetIt();
-  await NotificationsHelper.init();
+  // await NotificationsHelper.init();
   Bloc.observer = MyBlocObserver();
 
   SystemChrome.setSystemUIOverlayStyle(

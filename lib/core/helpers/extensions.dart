@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DecimalTextInputFormatter extends TextInputFormatter {
+
   DecimalTextInputFormatter({
     required int decimalRange,
     required bool activatedNegativeValues,
@@ -18,7 +19,6 @@ class DecimalTextInputFormatter extends TextInputFormatter {
       _exp = RegExp('^($num){0,1}\$');
     }
   }
-
   RegExp? _exp;
 
   @override
@@ -39,20 +39,13 @@ extension StringExtensions on String {
   }
 }
 
-extension NumDurationExtensions on num {
-  Duration get microseconds => Duration(microseconds: round());
-
-  Duration get ms => (this * 1000).microseconds;
-
-  Duration get milliseconds => (this * 1000).microseconds;
-
-  Duration get seconds => (this * 1000 * 1000).microseconds;
-
-  Duration get minutes => (this * 1000 * 1000 * 60).microseconds;
-
-  Duration get hours => (this * 1000 * 1000 * 60 * 60).microseconds;
-
-  Duration get days => (this * 1000 * 1000 * 60 * 60 * 24).microseconds;
+extension FormatDuration on Duration {
+  String format() {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final twoDigitMinutes = twoDigits(inMinutes.remainder(60));
+    final twoDigitSeconds = twoDigits(inSeconds.remainder(60));
+    return '$twoDigitMinutes:$twoDigitSeconds';
+  }
 }
 
 extension GetHexColor on String {
