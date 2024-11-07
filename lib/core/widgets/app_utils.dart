@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gap/gap.dart';
+// import 'package:gap/gap.dart';
 import 'package:posts_app/core/theming/colors.dart';
 import 'package:posts_app/generated/assets.dart';
 
@@ -22,7 +23,7 @@ void showAlertDialog(
           SvgPicture.asset(
             isFailed ? Assets.svgIcErrorAlert : Assets.svgIcSucessAlert,
           ),
-          const Gap(4),
+          4.verticalSpace,
           Text(
             title,
             textAlign: TextAlign.center,

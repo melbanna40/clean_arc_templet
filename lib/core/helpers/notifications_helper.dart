@@ -30,7 +30,7 @@ class NotificationsHelper {
     ); // @mipmap/ic_launcher @drawable/notification_logo
     const initializationSettingsDarwin = DarwinInitializationSettings(
       requestCriticalPermission: true,
-      onDidReceiveLocalNotification: onDidReceiveLocalNotification,
+      // onDidReceiveLocalNotification: onDidReceiveLocalNotification,
     );
 
     await flutterLocalNotificationsPlugin
